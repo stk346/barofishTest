@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://js.tosspayments.com/v1"></script>
+</head>
+<body>
+<section>
+    <!-- ... -->
+    <span>총 주문금액</span>
+    <span>35,000 원</span>
+    <button id="payment-button">35,000원 결제하기</button>
+</section>
+<script>
+    var clientKey = 'test_ck_YoEjb0gm23PjGDolPYkrpGwBJn5e'
+    var tossPayments = TossPayments(clientKey)
+    var button = document.getElementById('payment-button') // 결제하기 버튼
+    button.addEventListener('click', function () {
+        tossPayments.requestPayment('가상계좌', { // 결제 수단 파라미터
+          // 결제 정보 파라미터
+          amount: 15000,
+          orderId: 'wWiN4cqESFfDwt6WQr85X',
+          orderName: '토스 티셔츠 외 2건',
+          customerName: '박토스',
+          successUrl: 'http://localhost:8080/success',
+          failUrl: 'http://localhost:8080/fail',
+          validHours: 24,
+          cashReceipt: {
+            type: '소득공제',
+          },
+        })
+    })
+
+</script>
+</body>
+</html>
